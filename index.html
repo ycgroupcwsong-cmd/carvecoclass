@@ -409,5 +409,48 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.nw-reveal').forEach((el) => revealObserver.observe(el));
 </script>
 
+
+<script>
+/* 식스샵 iframe 자동 높이 연동 */
+(() => {
+  const MESSAGE_TYPE = 'CARVECOCLASS_RESIZE';
+
+  const sendHeight = () => {
+    const body = document.body;
+    const html = document.documentElement;
+    const height = Math.max(
+      body ? body.scrollHeight : 0,
+      body ? body.offsetHeight : 0,
+      html ? html.scrollHeight : 0,
+      html ? html.offsetHeight : 0
+    );
+
+    window.parent.postMessage({
+      type: MESSAGE_TYPE,
+      height: Math.ceil(height)
+    }, '*');
+  };
+
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(sendHeight).catch(() => {});
+  }
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(sendHeight);
+    resizeObserver.observe(document.documentElement);
+    if (document.body) resizeObserver.observe(document.body);
+  }
+
+  document.querySelectorAll('img').forEach((img) => {
+    if (!img.complete) img.addEventListener('load', sendHeight, { once: true });
+  });
+
+  [100, 500, 1200, 2500].forEach((delay) => setTimeout(sendHeight, delay));
+})();
+</script>
+
 </body>
 </html>
