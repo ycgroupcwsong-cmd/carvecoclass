@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>넥스트우드 Carveco(ArtCAM) + CNC 4일 실무 교육 중간 콘텐츠</title>
+
+<style>
+  :root{
+    --nw-bg:#f4f4f1;
+    --nw-paper:#ffffff;
+    --nw-ink:#111315;
+    --nw-muted:#666b70;
+    --nw-line:#d9dcde;
+    --nw-dark:#101214;
+    --nw-dark-2:#181b1e;
+    --nw-accent:#e85a12;
+    --nw-accent-rgb:232,90,18;
+    --nw-max:1320px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--nw-bg);color:var(--nw-ink);font-family:'Pretendard','Noto Sans KR',Arial,sans-serif;word-break:keep-all}
+  .post-header,.blog-header,.article-header,.blog-post-header,.post-title-wrap,.title-wrap,
+  .blog-post-detail__header,.s-blog-post-detail__header,.post-title,.blog-post-title,.article-title,
+  .post-date,.blog-post-date,.article-date,.date,main>h1,body>h1{display:none!important}
+  .post-content,.ck-content,.blog-post-container,.entry-content,.section-content,.widget-html,.html-widget{margin:0!important;padding:0!important;max-width:none!important}
+  .nw-course{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;background:var(--nw-bg)}
+  .nw-shell{width:min(var(--nw-max),calc(100% - 56px));margin:0 auto}
+  .nw-section{position:relative;padding:108px 0;border-top:1px solid var(--nw-line)}
+  .nw-section:first-child{border-top:0}
+  .nw-dark-section{background:var(--nw-dark);color:#fff;border-top:0}
+  .nw-dark-section .nw-muted{color:#aeb3b7}
+  .nw-kicker{display:flex;align-items:center;gap:14px;margin:0 0 20px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--nw-accent)}
+  .nw-kicker:before{content:'';width:36px;height:2px;background:var(--nw-accent)}
+  .nw-heading{margin:0;max-width:880px;font-size:clamp(34px,4.2vw,66px);line-height:1.08;letter-spacing:-.055em;font-weight:800}
+  .nw-heading strong{color:var(--nw-accent);font-weight:800}
+  .nw-sub{margin:24px 0 0;max-width:760px;font-size:18px;line-height:1.82;color:var(--nw-muted)}
+  .nw-muted{color:var(--nw-muted)}
+  .nw-rule{height:1px;background:var(--nw-line);margin:54px 0}
+  .nw-top-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);gap:42px;align-items:stretch;margin-top:52px}
+  .nw-story-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;min-height:590px}
+  .nw-story-side{display:grid;grid-template-rows:1fr 1fr;gap:12px}
+  .nw-image{position:relative;min-height:240px;overflow:hidden;background:#dfe1e2 center/cover no-repeat;border:1px solid rgba(17,19,21,.12)}
+  .nw-dark-section .nw-image{border-color:rgba(255,255,255,.12);background-color:#24282b}
+  .nw-image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72));pointer-events:none}
+  .nw-image.has-image .nw-placeholder{opacity:0}
+  .nw-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:13px;line-height:1.55;letter-spacing:.04em;color:#697077;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.5),rgba(255,255,255,.5) 10px,rgba(0,0,0,.03) 10px,rgba(0,0,0,.03) 20px);transition:opacity .25s ease}
+  .nw-dark-section .nw-placeholder{color:#9ca3a8;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.04),rgba(255,255,255,.04) 10px,rgba(255,255,255,.01) 10px,rgba(255,255,255,.01) 20px)}
+  .nw-image-caption{position:absolute;z-index:2;left:22px;right:22px;bottom:18px;color:#fff}
+  .nw-image-caption b{display:block;font-size:20px;line-height:1.25;letter-spacing:-.03em}
+  .nw-image-caption span{display:block;margin-top:6px;font-size:13px;color:rgba(255,255,255,.72)}
+  .nw-overview{display:flex;flex-direction:column;border:1px solid var(--nw-line);background:var(--nw-paper)}
+  .nw-overview-head{padding:34px 36px;border-bottom:1px solid var(--nw-line);background:var(--nw-dark);color:#fff}
+  .nw-overview-head small{display:block;color:var(--nw-accent);font-weight:800;letter-spacing:.08em}
+  .nw-overview-head h3{margin:12px 0 0;font-size:32px;line-height:1.25;letter-spacing:-.04em}
+  .nw-info-row{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:23px 34px;border-bottom:1px solid var(--nw-line);font-size:15px;line-height:1.6}
+  .nw-info-row:last-child{border-bottom:0}
+  .nw-info-row dt{margin:0;color:#8a8f94;font-weight:700}
+  .nw-info-row dd{margin:0;font-weight:650}
+  .nw-price{display:flex;align-items:end;justify-content:space-between;gap:22px;padding:30px 34px;background:rgba(var(--nw-accent-rgb),.08);border-top:3px solid var(--nw-accent)}
+  .nw-price span{font-size:14px;color:var(--nw-muted);line-height:1.55}
+  .nw-price strong{font-size:42px;line-height:1;color:var(--nw-accent);letter-spacing:-.05em;white-space:nowrap}
+  .nw-price strong em{font-style:normal;font-size:18px;margin-left:5px;color:var(--nw-ink)}
+  .nw-metrics{display:grid;grid-template-columns:repeat(4,1fr);margin-top:22px;border:1px solid var(--nw-line);background:var(--nw-paper)}
+  .nw-metric{padding:26px 28px;border-right:1px solid var(--nw-line)}
+  .nw-metric:last-child{border-right:0}
+  .nw-metric b{display:block;font-size:30px;line-height:1;color:var(--nw-accent);letter-spacing:-.04em}
+  .nw-metric span{display:block;margin-top:10px;font-size:14px;line-height:1.5;color:var(--nw-muted)}
+  .nw-section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:48px}
+  .nw-section-head .nw-heading{font-size:clamp(32px,3.5vw,54px)}
+  .nw-section-head .nw-sub{max-width:460px;margin:0;text-align:left}
+  .nw-curriculum{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--nw-ink);border-bottom:1px solid var(--nw-line)}
+  .nw-day{position:relative;border-right:1px solid var(--nw-line);background:var(--nw-paper);transition:transform .25s ease,box-shadow .25s ease}
+  .nw-day:last-child{border-right:0}
+  .nw-day:hover{transform:translateY(-8px);z-index:2;box-shadow:0 24px 54px rgba(17,19,21,.12)}
+  .nw-day-image{height:230px;border:0;border-bottom:1px solid var(--nw-line)}
+  .nw-day-head{padding:26px 26px 21px;border-bottom:1px solid var(--nw-line)}
+  .nw-day-no{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--nw-accent)}
+  .nw-day h3{margin:10px 0 0;font-size:23px;line-height:1.32;letter-spacing:-.04em}
+  .nw-day ul{list-style:none;margin:0;padding:22px 26px 30px}
+  .nw-day li{position:relative;padding:8px 0 8px 17px;font-size:14px;line-height:1.55;color:#4f5559}
+  .nw-day li:before{content:'';position:absolute;left:0;top:16px;width:6px;height:2px;background:var(--nw-accent)}
+  .nw-flow-note{margin-top:22px;padding:22px 26px;border-left:3px solid var(--nw-accent);background:#eceeea;font-size:15px;line-height:1.7;color:#555b5f}
+  .nw-result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .nw-result-card{position:relative;min-height:310px;overflow:hidden;background:var(--nw-dark);color:#fff}
+  .nw-result-card:nth-child(1),.nw-result-card:nth-child(6){grid-column:span 2}
+  .nw-result-card .nw-image{height:100%;min-height:310px;border:0}
+  .nw-result-card .nw-image-caption b{font-size:22px}
+  .nw-result-card .nw-index{position:absolute;z-index:3;top:18px;right:20px;font-size:12px;color:rgba(255,255,255,.65);letter-spacing:.1em}
+  .nw-history-layout{display:grid;grid-template-columns:1.4fr .6fr;gap:12px}
+  .nw-history-main{min-height:570px}
+  .nw-history-side{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .nw-history-side .nw-image{min-height:279px}
+  .nw-feature-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+  .nw-feature{padding:34px 28px;min-height:230px;border-right:1px solid rgba(255,255,255,.18);transition:background .25s ease}
+  .nw-feature:last-child{border-right:0}
+  .nw-feature:hover{background:rgba(var(--nw-accent-rgb),.13)}
+  .nw-feature-no{font-size:13px;color:var(--nw-accent);font-weight:800;letter-spacing:.12em}
+  .nw-feature h3{margin:40px 0 13px;font-size:20px;line-height:1.35;letter-spacing:-.035em}
+  .nw-feature p{margin:0;font-size:14px;line-height:1.72;color:#aeb3b7}
+  .nw-audience{display:grid;grid-template-columns:.72fr 1.28fr;gap:42px;align-items:start}
+  .nw-audience-image{min-height:570px}
+  .nw-audience-list{counter-reset:audience;border-top:2px solid var(--nw-ink)}
+  .nw-audience-item{counter-increment:audience;display:grid;grid-template-columns:64px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--nw-line)}
+  .nw-audience-item:before{content:counter(audience,decimal-leading-zero);font-size:13px;font-weight:800;color:var(--nw-accent);letter-spacing:.08em;padding-top:4px}
+  .nw-audience-item b{display:block;font-size:18px;line-height:1.4;letter-spacing:-.025em}
+  .nw-audience-item span{display:block;margin-top:7px;font-size:14px;line-height:1.65;color:var(--nw-muted)}
+  .nw-guide{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--nw-line);background:var(--nw-paper)}
+  .nw-guide-left,.nw-guide-right{padding:44px 48px}
+  .nw-guide-left{border-right:1px solid var(--nw-line)}
+  .nw-guide h3{margin:0 0 26px;font-size:27px;letter-spacing:-.04em}
+  .nw-guide-row{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--nw-line);font-size:14px;line-height:1.55}
+  .nw-guide-row:last-child{border-bottom:0}
+  .nw-guide-row span:first-child{color:#858b90;font-weight:700}
+  .nw-guide-price{padding:24px 26px;margin-bottom:20px;background:var(--nw-dark);color:#fff;border-left:5px solid var(--nw-accent)}
+  .nw-guide-price small{display:block;color:#afb4b8}
+  .nw-guide-price strong{display:block;margin-top:9px;font-size:40px;line-height:1;color:var(--nw-accent);letter-spacing:-.05em}
+  .nw-guide-price strong em{font-size:15px;font-style:normal;color:#fff;margin-left:6px}
+  .nw-checks{list-style:none;margin:0;padding:0}
+  .nw-checks li{position:relative;padding:8px 0 8px 26px;font-size:14px;line-height:1.6}
+  .nw-checks li:before{content:'✓';position:absolute;left:0;color:var(--nw-accent);font-weight:900}
+  .nw-faq{border-top:2px solid var(--nw-ink)}
+  .nw-faq details{border-bottom:1px solid var(--nw-line);background:var(--nw-paper)}
+  .nw-faq summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:55px 1fr 24px;gap:12px;padding:24px 26px;font-size:17px;font-weight:750;align-items:center}
+  .nw-faq summary::-webkit-details-marker{display:none}
+  .nw-faq summary:before{content:'Q';color:var(--nw-accent);font-size:13px;font-weight:900}
+  .nw-faq summary:after{content:'+';font-size:24px;font-weight:300}
+  .nw-faq details[open] summary:after{content:'−'}
+  .nw-faq p{margin:0;padding:0 26px 25px 93px;color:var(--nw-muted);font-size:14px;line-height:1.75}
+  .nw-reveal{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s cubic-bezier(.2,.7,.2,1)}
+  .nw-reveal.is-visible{opacity:1;transform:none}
+  .nw-delay-1{transition-delay:.07s}.nw-delay-2{transition-delay:.14s}.nw-delay-3{transition-delay:.21s}.nw-delay-4{transition-delay:.28s}
+  @media(max-width:1100px){
+    .nw-top-grid,.nw-audience{grid-template-columns:1fr}
+    .nw-overview{display:grid;grid-template-columns:1fr 1fr}.nw-overview-head,.nw-price{grid-column:1/-1}
+    .nw-curriculum{grid-template-columns:1fr 1fr}.nw-day:nth-child(2){border-right:0}.nw-day:nth-child(-n+2){border-bottom:1px solid var(--nw-line)}
+    .nw-result-grid{grid-template-columns:repeat(2,1fr)}
+    .nw-history-layout{grid-template-columns:1fr}.nw-history-side{grid-template-columns:repeat(4,1fr)}.nw-history-side .nw-image{min-height:220px}
+    .nw-feature-grid{grid-template-columns:repeat(2,1fr)}.nw-feature{border-bottom:1px solid rgba(255,255,255,.18)}.nw-feature:nth-child(2n){border-right:0}.nw-feature:last-child{grid-column:1/-1}
+  }
+  @media(max-width:760px){
+    .nw-shell{width:min(100% - 28px,var(--nw-max))}
+    .nw-section{padding:72px 0}
+    .nw-heading{font-size:37px}
+    .nw-sub{font-size:16px}
+    .nw-section-head{display:block;margin-bottom:34px}.nw-section-head .nw-sub{margin-top:18px}
+    .nw-top-grid{margin-top:34px;gap:20px}
+    .nw-story-grid{grid-template-columns:1fr;min-height:0}.nw-story-side{grid-template-columns:1fr 1fr;grid-template-rows:none}.nw-story-grid>.nw-image{min-height:380px}.nw-story-side .nw-image{min-height:220px}
+    .nw-overview{display:block}.nw-overview-head{padding:28px 24px}.nw-info-row{grid-template-columns:92px 1fr;padding:19px 22px}.nw-price{align-items:center;padding:24px 22px}.nw-price strong{font-size:36px}
+    .nw-metrics{grid-template-columns:1fr 1fr}.nw-metric{border-bottom:1px solid var(--nw-line)}.nw-metric:nth-child(2){border-right:0}.nw-metric:nth-child(n+3){border-bottom:0}
+    .nw-curriculum{grid-template-columns:1fr}.nw-day{border-right:0!important;border-bottom:1px solid var(--nw-line)!important}.nw-day:last-child{border-bottom:0!important}.nw-day:hover{transform:none;box-shadow:none}
+    .nw-result-grid{grid-template-columns:1fr}.nw-result-card,.nw-result-card:nth-child(1),.nw-result-card:nth-child(6){grid-column:auto}.nw-result-card,.nw-result-card .nw-image{min-height:330px}
+    .nw-history-main{min-height:430px}.nw-history-side{grid-template-columns:1fr 1fr}.nw-history-side .nw-image{min-height:210px}
+    .nw-feature-grid{grid-template-columns:1fr}.nw-feature,.nw-feature:nth-child(2n){border-right:0}.nw-feature:last-child{grid-column:auto}
+    .nw-audience-image{min-height:410px}.nw-audience-item{grid-template-columns:48px 1fr}
+    .nw-guide{grid-template-columns:1fr}.nw-guide-left,.nw-guide-right{padding:34px 24px}.nw-guide-left{border-right:0;border-bottom:1px solid var(--nw-line)}
+    .nw-faq summary{grid-template-columns:40px 1fr 20px;padding:22px 18px}.nw-faq p{padding:0 18px 22px 70px}
+  }
+  @media(max-width:480px){
+    .nw-story-side{grid-template-columns:1fr}.nw-overview h3{font-size:27px}.nw-info-row{grid-template-columns:1fr;gap:4px}.nw-price{display:block}.nw-price strong{display:block;margin-top:14px}.nw-metrics{grid-template-columns:1fr}.nw-metric{border-right:0!important;border-bottom:1px solid var(--nw-line)!important}.nw-metric:last-child{border-bottom:0!important}.nw-history-side{grid-template-columns:1fr}.nw-history-side .nw-image{min-height:250px}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.nw-reveal{opacity:1!important;transform:none!important;transition:none!important}.nw-day{transition:none!important}}
+</style>
+
+<style>:root{--nw-accent:#d6a43a;--nw-accent-rgb:214,164,58;}</style>
+</head>
+<body>
+<!-- =========================================================
+  넥스트우드 Carveco(ArtCAM) + CNC 4일 실무 교육 중간 콘텐츠 : 중간 콘텐츠 전용
+  - 최상단 메인 비주얼/메뉴 제외
+  - 최하단 대형 신청 CTA 제외
+  - 이미지 URL은 문서 하단 COURSE_IMAGES에서 일괄 입력
+========================================================== -->
+<main class="nw-course">
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-kicker nw-reveal">DESIGN · CAM · CNC</div>
+      <h2 class="nw-heading nw-reveal">프로그램에서 끝나지 않고,<br><strong>실제 제품과 CNC 가공</strong>까지 연결합니다.</h2>
+      <p class="nw-sub nw-reveal">사진·그림·글자·로고·문양을 2D 도안과 깊이감 있는 3D 부조 데이터로 만들고, 공구경로 생성부터 실제 CNC 조각 가공까지 연결하는 4일 실무 과정입니다.</p>
+
+      <div class="nw-top-grid">
+        <div>
+          <div class="nw-story-grid nw-reveal">
+            <div class="nw-image " data-image="opening_main"><div class="nw-placeholder">Carveco 릴리프/툴패스 화면 이미지<br>COURSE_IMAGES.opening_main</div><div class="nw-image-caption"><b>Carveco에서 2D·3D 조각 설계</b><span>사진과 도안을 깊이감 있는 릴리프로 변환</span></div></div>
+            <div class="nw-story-side">
+              <div class="nw-image " data-image="opening_result"><div class="nw-placeholder">입체 조각·아트월 완성품 이미지<br>COURSE_IMAGES.opening_result</div><div class="nw-image-caption"><b>특별한 조각 제품으로 완성</b><span>입체 간판·문양 패널·아트월·가구 장식</span></div></div>
+              <div class="nw-image " data-image="opening_cnc"><div class="nw-placeholder">CNC 조각 가공 실사 이미지<br>COURSE_IMAGES.opening_cnc</div><div class="nw-image-caption"><b>CNC 조각 장비 운용</b><span>공구경로 출력부터 실제 가공과 품질 확인</span></div></div>
+            </div>
+          </div>
+          <div class="nw-metrics nw-reveal">
+            <div class="nw-metric"><b>4 DAYS</b><span>월·화·수·목<br>집중 실무 과정</span></div>
+            <div class="nw-metric"><b>CAD/CAM</b><span>Carveco 2D/3D CAM<br>설계·가공 데이터</span></div>
+            <div class="nw-metric"><b>CNC</b><span>원점·공구·소재 세팅<br>실제 장비 운용</span></div>
+            <div class="nw-metric"><b>RESULT</b><span>실물 결과물과<br>가공 데이터 완성</span></div>
+          </div>
+        </div>
+        <aside class="nw-overview nw-reveal nw-delay-2">
+          <div class="nw-overview-head"><small>CARVECO(ARTCAM) + CNC · 1 SET</small><h3>Carveco 2D·3D 조각 설계 + CNC 운용 실무</h3></div>
+          <dl class="nw-info-row"><dt>교육 구성</dt><dd>Carveco 2D·3D 디자인 + 툴패스 + CNC 조각 가공 실습</dd></dl>
+          <dl class="nw-info-row"><dt>교육 일정</dt><dd>4일 과정 · 월/화/수/목 · 1일 약 6~7시간</dd></dl>
+          <dl class="nw-info-row"><dt>교육 장소</dt><dd>화성 공장 교육장 <span class="nw-muted">(상세 위치 별도 안내)</span></dd></dl>
+          <dl class="nw-info-row"><dt>제공 자료</dt><dd>Carveco 예제 파일, 릴리프 데이터, CAM 파일, G-code 예제, 교육 자료</dd></dl>
+          <dl class="nw-info-row"><dt>준비물</dt><dd>개인 노트북(필수), 마우스</dd></dl>
+          <div class="nw-price"><span>부담을 낮춘 4일 실무 교육비<br>부가가치세 별도</span><strong>30만원<em>+ VAT</em></strong></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">4-DAY CURRICULUM</div><h2 class="nw-heading nw-reveal">4일 동안 무엇을<br>배우게 되나요?</h2></div>
+        <p class="nw-sub nw-reveal">Carveco 기초와 2D 벡터부터 3D 릴리프, 황삭·정삭 툴패스, 실제 CNC 조각 가공까지 단계별로 확장합니다.</p>
+      </div>
+      <div class="nw-curriculum"><article class="nw-day nw-reveal nw-delay-1">
+          <div class="nw-image nw-day-image" data-image="day1"><div class="nw-placeholder">DAY 1 Carveco 2D 화면 이미지<br>COURSE_IMAGES.day1</div></div>
+          <div class="nw-day-head"><span class="nw-day-no">DAY 01</span><h3>Carveco 기초 &amp; 2D 디자인</h3></div>
+          <ul><li>모델 생성과 작업 영역 설정</li><li>벡터 생성 및 편집</li><li>레이어 관리</li><li>2D 프로파일 툴패스 생성</li><li>나뭇결 텍스처 추가</li><li>벡터 네스팅</li></ul>
+        </article><article class="nw-day nw-reveal nw-delay-2">
+          <div class="nw-image nw-day-image" data-image="day2"><div class="nw-placeholder">DAY 2 3D 릴리프 디자인 이미지<br>COURSE_IMAGES.day2</div></div>
+          <div class="nw-day-head"><span class="nw-day-no">DAY 02</span><h3>3D 모델 디자인</h3></div>
+          <ul><li>도면 불러오기와 릴리프 생성</li><li>비트맵 이미지를 벡터로 변환</li><li>Shape Editor를 활용한 릴리프 편집</li><li>부드러운 릴리프 표현과 표면 보정</li><li>릴리프 클립아트 라이브러리 활용</li><li>평면 도안을 입체·부조 데이터로 확장</li></ul>
+        </article><article class="nw-day nw-reveal nw-delay-3">
+          <div class="nw-image nw-day-image" data-image="day3"><div class="nw-placeholder">DAY 3 툴패스/시뮬레이션 이미지<br>COURSE_IMAGES.day3</div></div>
+          <div class="nw-day-head"><span class="nw-day-no">DAY 03</span><h3>툴패스 생성 &amp; 저장</h3></div>
+          <ul><li>황삭·정삭 가공 전략 이해</li><li>공구 라이브러리 관리</li><li>프로파일·황삭·V카빙·릴리프 툴패스</li><li>피드·플런지·RPM 조건 설정</li><li>스텝다운·스텝오버 설정</li><li>툴패스 시뮬레이션</li><li>CNC용 G-code 저장</li></ul>
+        </article><article class="nw-day nw-reveal nw-delay-4">
+          <div class="nw-image nw-day-image" data-image="day4"><div class="nw-placeholder">DAY 4 CNC 조각 가공 실습 이미지<br>COURSE_IMAGES.day4</div></div>
+          <div class="nw-day-head"><span class="nw-day-no">DAY 04</span><h3>CNC 조각 가공 실습</h3></div>
+          <ul><li>CNC 장비와 안전 운용 이해</li><li>원점 설정</li><li>공구 교체와 공구 길이 확인</li><li>소재 고정 및 작업 준비</li><li>G-code 파일 불러오기</li><li>실제 조각 가공과 가공 품질 확인</li></ul>
+        </article></div>
+      <div class="nw-flow-note nw-reveal">평면 도안을 만드는 데서 멈추지 않고, 깊이감 있는 3D 조각 데이터와 실제 조각 결과물로 연결하는 것이 이 과정의 핵심입니다.</div>
+    </div>
+  </section>
+
+  <section class="nw-section nw-dark-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">MAKE IT REAL</div><h2 class="nw-heading nw-reveal">이 교육으로<br><strong>이런 결과물</strong>을 만들 수 있습니다.</h2></div>
+        <p class="nw-sub nw-reveal">단순 예제 파일이 아니라 실제 목공 제품과 현장 제작에 응용할 수 있는 형상을 중심으로 구성합니다. 아래 영역은 결과물 이미지를 넉넉하게 배치할 수 있도록 설계했습니다.</p>
+      </div>
+      <div class="nw-result-grid"><article class="nw-result-card nw-reveal nw-delay-1">
+          <div class="nw-image " data-image="result_01"><div class="nw-placeholder">로고 입체 간판 이미지<br>COURSE_IMAGES.result_01</div><div class="nw-image-caption"><b>로고 입체 간판</b><span>글자·로고·문양의 2D/3D 가공</span></div></div>
+          <span class="nw-index">RESULT 01</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-2">
+          <div class="nw-image " data-image="result_02"><div class="nw-placeholder">인물 부조 조각 이미지<br>COURSE_IMAGES.result_02</div><div class="nw-image-caption"><b>인물 &amp; 사진 부조</b><span>사진을 깊이감 있는 릴리프로 변환</span></div></div>
+          <span class="nw-index">RESULT 02</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-3">
+          <div class="nw-image " data-image="result_03"><div class="nw-placeholder">문양 조각 패널 이미지<br>COURSE_IMAGES.result_03</div><div class="nw-image-caption"><b>문양 조각 패널</b><span>장식 패턴과 반복 조각</span></div></div>
+          <span class="nw-index">RESULT 03</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-4">
+          <div class="nw-image " data-image="result_04"><div class="nw-placeholder">아트월 이미지<br>COURSE_IMAGES.result_04</div><div class="nw-image-caption"><b>3D 아트월</b><span>대형 릴리프와 인테리어 패널</span></div></div>
+          <span class="nw-index">RESULT 04</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-1">
+          <div class="nw-image " data-image="result_05"><div class="nw-placeholder">가구 장식 패널 이미지<br>COURSE_IMAGES.result_05</div><div class="nw-image-caption"><b>가구 장식 패널</b><span>도어·몰딩·장식 부품 응용</span></div></div>
+          <span class="nw-index">RESULT 05</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-2">
+          <div class="nw-image " data-image="result_06"><div class="nw-placeholder">실물 가구와 조각 결과물 대형 이미지<br>COURSE_IMAGES.result_06</div><div class="nw-image-caption"><b>조각이 적용된 실물 가구</b><span>침대 헤드·수납장·도어 등 다양한 실물 가구</span></div></div>
+          <span class="nw-index">RESULT 06</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-3">
+          <div class="nw-image " data-image="result_07"><div class="nw-placeholder">금속 또는 석재 조각 데이터 이미지<br>COURSE_IMAGES.result_07</div><div class="nw-image-caption"><b>금속·석재 조각 데이터</b><span>다른 소재 가공을 위한 3D 데이터 제작</span></div></div>
+          <span class="nw-index">RESULT 07</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-4">
+          <div class="nw-image " data-image="result_08"><div class="nw-placeholder">장식 오브제/조형물 이미지<br>COURSE_IMAGES.result_08</div><div class="nw-image-caption"><b>장식 오브제 &amp; 조형물</b><span>클립아트와 릴리프를 조합한 제품</span></div></div>
+          <span class="nw-index">RESULT 08</span>
+        </article></div>
+    </div>
+  </section>
+
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">CLASS ARCHIVE</div><h2 class="nw-heading nw-reveal">지난 교육 현장<br>스케치</h2></div>
+        <p class="nw-sub nw-reveal">프로그램 화면만 보여주는 교육이 아닙니다. 실제 교육장, 수강생 실습, 소재 세팅, CNC 가공 장면이 함께 드러나도록 구성했습니다.</p>
+      </div>
+      <div class="nw-history-layout">
+        <div class="nw-image nw-history-main nw-reveal" data-image="history_cnc_main"><div class="nw-placeholder">CNC가 메인으로 보이는 교육 현장 대표 이미지<br>COURSE_IMAGES.history_cnc_main</div><div class="nw-image-caption"><b>실제 CNC 장비 운용 실습</b><span>교육장의 규모와 장비가 한눈에 보이는 사진</span></div></div>
+        <div class="nw-history-side">
+          <div class="nw-image " data-image="history_01"><div class="nw-placeholder">지난 교육 현장 사진 01<br>COURSE_IMAGES.history_01</div><div class="nw-image-caption"><b>프로그램 실습</b><span>강사 화면과 수강생 노트북</span></div></div>
+          <div class="nw-image " data-image="history_02"><div class="nw-placeholder">지난 교육 현장 사진 02<br>COURSE_IMAGES.history_02</div><div class="nw-image-caption"><b>가공 데이터 점검</b><span>공구경로와 시뮬레이션 확인</span></div></div>
+          <div class="nw-image " data-image="history_03"><div class="nw-placeholder">지난 교육 현장 사진 03<br>COURSE_IMAGES.history_03</div><div class="nw-image-caption"><b>CNC 세팅</b><span>소재 고정과 원점 설정</span></div></div>
+          <div class="nw-image " data-image="history_04"><div class="nw-placeholder">지난 교육 현장 사진 04<br>COURSE_IMAGES.history_04</div><div class="nw-image-caption"><b>결과물 검수</b><span>가공 품질과 마감 확인</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nw-section nw-dark-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">WHY THIS CLASS</div><h2 class="nw-heading nw-reveal">이 교육이<br>특별한 이유</h2></div>
+        <p class="nw-sub nw-reveal">설계 기능만 설명하거나 장비 시연만 보여주는 방식이 아니라, 제작자가 스스로 데이터를 만들고 장비를 운용하는 데 필요한 흐름을 한 과정 안에서 다룹니다.</p>
+      </div>
+      <div class="nw-feature-grid"><article class="nw-feature nw-reveal nw-delay-1">
+          <span class="nw-feature-no">01</span><h3>2D 도안에서 3D 부조까지</h3><p>글자·로고·사진·문양을 벡터와 릴리프 데이터로 확장하는 과정을 단계적으로 배웁니다.</p>
+        </article><article class="nw-feature nw-reveal nw-delay-2">
+          <span class="nw-feature-no">02</span><h3>조각·곡면 중심의 실무 과정</h3><p>일반 CAD 교육보다 입체 조각, 곡면 패널, 아트월, 장식 가공에 초점을 맞춥니다.</p>
+        </article><article class="nw-feature nw-reveal nw-delay-3">
+          <span class="nw-feature-no">03</span><h3>CAD/CAM + CNC 통합</h3><p>Carveco 툴패스 생성과 G-code 출력, CNC 세팅과 조각 가공을 하나의 과정으로 진행합니다.</p>
+        </article><article class="nw-feature nw-reveal nw-delay-4">
+          <span class="nw-feature-no">04</span><h3>현업 엔지니어 직강</h3><p>실제 조각 가공에서 발생하는 공구 선택, 조건 설정, 표면 품질 문제까지 현장 기준으로 설명합니다.</p>
+        </article><article class="nw-feature nw-reveal nw-delay-1">
+          <span class="nw-feature-no">05</span><h3>예제와 조각 데이터 제공</h3><p>벡터·릴리프·툴패스·G-code 예제를 제공해 교육 후에도 반복 실습과 응용이 가능합니다.</p>
+        </article></div>
+    </div>
+  </section>
+
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-audience">
+        <div class="nw-image nw-audience-image nw-reveal" data-image="audience_main"><div class="nw-placeholder">Carveco 조각 설계 또는 CNC 조각 현장 이미지<br>COURSE_IMAGES.audience_main</div><div class="nw-image-caption"><b>누구에게 필요한 교육인가</b><span>초보자부터 현업 제작자까지</span></div></div>
+        <div>
+          <div class="nw-kicker nw-reveal">RECOMMENDED FOR</div>
+          <h2 class="nw-heading nw-reveal">이런 분께<br>추천합니다.</h2>
+          <div class="nw-audience-list"><div class="nw-audience-item nw-reveal"><div><b>특별한 목공 제품을 제작하고 싶은 분</b><span>예비 창업자, 재직자, 목공·가구·인테리어 제작 현업 종사자</span></div></div><div class="nw-audience-item nw-reveal"><div><b>CAD 디자인에 관심 있는 초보자와 기존 사용자</b><span>AutoCAD, Fusion, Rhino 등 다른 CAD 경험이 있거나 2D 도안을 3D 조각으로 확장하고 싶은 분</span></div></div><div class="nw-audience-item nw-reveal"><div><b>CAM과 CNC 조각 가공을 배우고 싶은 분</b><span>CNC를 설치했거나 도입을 준비하면서 공구경로와 G-code 생성까지 직접 하고 싶은 분</span></div></div><div class="nw-audience-item nw-reveal"><div><b>광고·간판 제작업체</b><span>로고와 글자를 평면 출력이 아닌 입체 조각 간판과 장식 사인으로 제작하고 싶은 업체</span></div></div><div class="nw-audience-item nw-reveal"><div><b>목공·가구 제품 제조업체</b><span>문양 조각, 입체 장식 패널, 인물 간판, 가구 장식 가공을 제품에 적용하고 싶은 업체</span></div></div><div class="nw-audience-item nw-reveal"><div><b>조형물·금속·석재 조각업체</b><span>평면 도안을 깊이감 있는 입체 조각 데이터로 제작해 다양한 소재 가공에 활용하고 싶은 업체</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">COURSE INFORMATION</div><h2 class="nw-heading nw-reveal">교육 관련<br>안내</h2></div>
+        <p class="nw-sub nw-reveal">최상단과 최하단 신청 영역은 별도 디자인할 수 있도록 제외했습니다. 이 영역은 일정, 비용, 준비물 등 실제 신청 전 확인해야 하는 정보만 정리합니다.</p>
+      </div>
+      <div class="nw-guide nw-reveal">
+        <div class="nw-guide-left">
+          <h3>기본 안내</h3>
+          <div class="nw-guide-row"><span>교육 기간</span><span>4일 과정 (월·화·수·목 / 1일 약 6~7시간)</span></div>
+          <div class="nw-guide-row"><span>교육 장소</span><span>화성 공장 교육장</span></div>
+          <div class="nw-guide-row"><span>교육 방식</span><span>Carveco 2D·3D 디자인·툴패스 실습 + CNC 조각 장비 실습</span></div>
+          <div class="nw-guide-row"><span>준비물</span><span>개인 노트북(필수), 마우스</span></div>
+          <div class="nw-guide-row"><span>제공 자료</span><span>Carveco 예제 파일, 릴리프 데이터, CAM 파일, G-code 예제, 교육 자료</span></div>
+        </div>
+        <div class="nw-guide-right">
+          <h3>교육 비용</h3>
+          <div class="nw-guide-price"><small>1 Set · 1인 기준</small><strong>30만원<em>부가세 별도</em></strong></div>
+          <ul class="nw-checks">
+            <li>소프트웨어 설계·CAM 실습과 CNC 장비 실습을 한 과정으로 진행</li>
+            <li>예제 파일, 가공 데이터, 교육 자료 제공</li>
+            <li>수강생이 직접 만든 데이터로 장비 세팅과 가공 품질 확인</li>
+            <li>세부 일정과 모집 인원은 상단 신청 영역에서 별도 안내 가능</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nw-section">
+    <div class="nw-shell">
+      <div class="nw-section-head">
+        <div><div class="nw-kicker nw-reveal">FAQ</div><h2 class="nw-heading nw-reveal">자주 묻는<br>질문</h2></div>
+      </div>
+      <div class="nw-faq nw-reveal"><details><summary>ArtCAM 사용자도 수강할 수 있나요?</summary><p>가능합니다. 기존 ArtCAM 작업 경험을 Carveco 환경으로 이어갈 수 있도록 벡터, 릴리프, 툴패스 흐름을 중심으로 설명합니다.</p></details><details><summary>그림이나 사진을 실제 부조로 만들 수 있나요?</summary><p>가능합니다. 이미지와 비트맵을 벡터 또는 릴리프 데이터로 전환하고 표면을 보정한 뒤 조각용 툴패스를 생성합니다.</p></details><details><summary>CNC 장비가 없어도 참여할 수 있나요?</summary><p>가능합니다. 교육장 장비를 활용해 소재 고정, 원점 설정, 공구 교체, G-code 실행까지 실습합니다.</p></details><details><summary>어떤 분야에 가장 잘 맞나요?</summary><p>입체 간판, 조각 패널, 아트월, 가구 장식, 인물 부조, 조형물 데이터 제작 등 조각과 장식 가공 분야에 적합합니다.</p></details></div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* =========================================================
+   이미지 링크 입력 영역
+   아래 빈 따옴표 안에 실제 이미지 URL을 넣으세요.
+   예: software: 'https://example.com/fusion-screen.jpg'
+   ========================================================= */
+const COURSE_IMAGES = {
+  opening_main: '',
+  opening_result: '',
+  opening_cnc: '',
+  day1: '',
+  day2: '',
+  day3: '',
+  day4: '',
+  result_01: '',
+  result_02: '',
+  result_03: '',
+  result_04: '',
+  result_05: '',
+  result_06: '',
+  result_07: '',
+  result_08: '',
+  history_cnc_main: '',
+  history_01: '',
+  history_02: '',
+  history_03: '',
+  history_04: '',
+  audience_main: ''
+};
+
+document.querySelectorAll('[data-image]').forEach((slot) => {
+  const url = COURSE_IMAGES[slot.dataset.image];
+  if (url && /^https?:\/\//i.test(url)) {
+    slot.style.backgroundImage = `url("${url.replace(/"/g,'\\"')}")`;
+    slot.classList.add('has-image');
+  }
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+document.querySelectorAll('.nw-reveal').forEach((el) => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
