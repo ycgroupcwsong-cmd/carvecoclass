@@ -84,7 +84,7 @@
   .nw-flow-note{margin-top:22px;padding:22px 26px;border-left:3px solid var(--nw-accent);background:#eceeea;font-size:15px;line-height:1.7;color:#555b5f}
   .nw-result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .nw-result-card{position:relative;min-height:310px;overflow:hidden;background:var(--nw-dark);color:#fff}
-  .nw-result-card:nth-child(1),.nw-result-card:nth-child(6){grid-column:span 2}
+  .nw-result-card:nth-child(1),.nw-result-card:nth-child(6),.nw-result-card:nth-child(9){grid-column:span 2}
   .nw-result-card .nw-image{height:100%;min-height:310px;border:0}
   .nw-result-card .nw-image-caption b{font-size:22px}
   .nw-result-card .nw-index{position:absolute;z-index:3;top:18px;right:20px;font-size:12px;color:rgba(255,255,255,.65);letter-spacing:.1em}
@@ -150,7 +150,7 @@
     .nw-overview{display:block}.nw-overview-head{padding:28px 24px}.nw-info-row{grid-template-columns:92px 1fr;padding:19px 22px}.nw-price{align-items:center;padding:24px 22px}.nw-price strong{font-size:36px}
     .nw-metrics{grid-template-columns:1fr 1fr}.nw-metric{border-bottom:1px solid var(--nw-line)}.nw-metric:nth-child(2){border-right:0}.nw-metric:nth-child(n+3){border-bottom:0}
     .nw-curriculum{grid-template-columns:1fr}.nw-day{border-right:0!important;border-bottom:1px solid var(--nw-line)!important}.nw-day:last-child{border-bottom:0!important}.nw-day:hover{transform:none;box-shadow:none}
-    .nw-result-grid{grid-template-columns:1fr}.nw-result-card,.nw-result-card:nth-child(1),.nw-result-card:nth-child(6){grid-column:auto}.nw-result-card,.nw-result-card .nw-image{min-height:330px}
+    .nw-result-grid{grid-template-columns:1fr}.nw-result-card,.nw-result-card:nth-child(1),.nw-result-card:nth-child(6),.nw-result-card:nth-child(9){grid-column:auto}.nw-result-card,.nw-result-card .nw-image{min-height:330px}
     .nw-history-main{min-height:430px}.nw-history-side{grid-template-columns:1fr 1fr}.nw-history-side .nw-image{min-height:210px}
     .nw-feature-grid{grid-template-columns:1fr}.nw-feature,.nw-feature:nth-child(2n){border-right:0}.nw-feature:last-child{grid-column:auto}
     .nw-audience-image{min-height:410px}.nw-audience-item{grid-template-columns:48px 1fr}
@@ -265,6 +265,9 @@
         </article><article class="nw-result-card nw-reveal nw-delay-4">
           <div class="nw-image " data-image="result_08"><div class="nw-placeholder">장식 오브제/조형물 이미지<br>COURSE_IMAGES.result_08</div><div class="nw-image-caption"><b>장식 오브제 &amp; 조형물</b><span>클립아트와 릴리프를 조합한 제품</span></div></div>
           <span class="nw-index">RESULT 08</span>
+        </article><article class="nw-result-card nw-reveal nw-delay-1">
+          <div class="nw-image " data-image="result_09"><div class="nw-placeholder">기념 주화 및 기념품 제작 이미지<br>COURSE_IMAGES.result_09</div><div class="nw-image-caption"><b>기념 주화 및 기념품 제작</b><span>기념 문양·로고·상징을 활용한 맞춤형 조각 제품</span></div></div>
+          <span class="nw-index">RESULT 09</span>
         </article></div>
     </div>
   </section>
@@ -381,6 +384,7 @@ const COURSE_IMAGES = {
   result_06: 'https://i.imgur.com/1G5lJKX.png',
   result_07: 'https://i.imgur.com/5sa4g2o.png',
   result_08: 'https://i.imgur.com/246jMe5.png',
+  result_09: '',
   history_cnc_main: 'https://i.imgur.com/zNiqDO1.jpeg',
   history_01: 'https://i.imgur.com/gOi6DN5.jpeg',
   history_02: 'https://i.imgur.com/jWQ2bIZ.jpeg',
